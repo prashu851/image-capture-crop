@@ -1,0 +1,11 @@
+.crop-content {
+    position: relative; 
+    width: 100%;
+    height: 90%;
+}
+.submit-btn{
+    float: right;
+    padding:10px 20px;
+    margin-top: 0.5rem;
+    cursor: pointer;
+}
