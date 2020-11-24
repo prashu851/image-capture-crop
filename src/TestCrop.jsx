@@ -1,8 +1,8 @@
 import React,{ useState } from 'react'
 import ReactCrop from "react-image-crop"
-import CropImage from './CropImage'
+import TestCropFunction from './TestCropFunction'
 
-const Crop = ({image,onSubmit}) => {
+const TestCrop = ({image}) => {
     const [croppedImageUrl, setCroppedImageUrl] = useState('')
     const [imageRef, setImageRef] = useState(null)
     const [crop, setCrop] = useState({ 
@@ -17,7 +17,7 @@ const Crop = ({image,onSubmit}) => {
      }
      const onCropComplete = (crop) => {
          if(imageRef !== null){
-            CropImage(imageRef,crop, 'croppedImage.jpeg')
+            TestCropFunction(imageRef,crop, 'croppedImage.jpeg')
             .then((result)=> {
                 console.log(result);
                 const blobUrl = URL.createObjectURL(result)
@@ -25,23 +25,16 @@ const Crop = ({image,onSubmit}) => {
             })
          }
      }
-     const onCrop = () => {
-       onSubmit(croppedImageUrl)
-     }
-
-      return (
-            <> 
-              <ReactCrop
-                className="captured-image" 
-                src={image} 
-                crop={crop} 
-                onChange={newCrop => setCrop(newCrop)}
-                onComplete={onCropComplete}
-                onImageLoaded={onImageLoaded} 
-              />;
-              <button onClick={onCrop} className="submit-btn">Submit</button>
-            </>
+    return (
+        <> 
+    <ReactCrop src={image} crop={crop} 
+    onChange={newCrop => setCrop(newCrop)}
+     onComplete={onCropComplete}
+      onImageLoaded={onImageLoaded} 
+      />;
+    <img src={croppedImageUrl} />
+    </>
     )
 }
 
-export default Crop;
+export default TestCrop;

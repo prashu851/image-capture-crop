@@ -12,8 +12,8 @@ const videoConstraints = {
 };
 
 const pictureDimentions = {
-    height: 480,
-    width: 320
+    height: 1280,
+    width: 720
 }
 
        
@@ -26,6 +26,7 @@ const Capture = () => {
     const capture = () => {
         const screenshot = webcamRef.current.getScreenshot();
         addImage(screenshot);
+        updateToggle(false)
         console.log(screenshot)
     }
 
@@ -55,11 +56,12 @@ const Capture = () => {
             />
             <button className="capture-btn" onClick={capture}>Capture photo</button>
             </div>
-            { image !== null && <ImageCropModal image={image} onCrop={onCrop}/>}
-            { croppedImage !== null && <img className="cropped-image" src={croppedImage} />}
+            
          </div>
         : ''
         }
+        { image !== null && <ImageCropModal image={image} onCrop={onCrop}/>}
+        { croppedImage !== null && <img className="cropped-image" src={croppedImage} />}
         
         </>
     );
