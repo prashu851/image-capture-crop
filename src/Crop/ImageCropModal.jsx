@@ -7,8 +7,8 @@ import Crop from './Crop'
 import './Crop.css'
 const customStyles = {
   overlay: {
-    height: '32rem',
-    width: '45rem',
+    height: '35rem',
+    width: '50rem',
     margin: '0 auto'
   },
 };
