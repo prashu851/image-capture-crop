@@ -1,13 +1,14 @@
-.crop-content {
-    position: relative; 
-    width: 100%;
-    height: 90%;
+.crop-content{
+    min-height:200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .captured-image{
-    width: 100%;
+    max-width: 100%;
+
 }
 .submit-btn{
-    float: right;
     padding:10px 20px;
     margin-top: 0.5rem;
     cursor: pointer;
@@ -16,4 +17,25 @@
     outline: none;
     border: none;
     border-radius: 5px;
+    margin-left:0.5rem;
+}
+.btns{
+float: right;
+}
+
+.right-btn,.left-btn{
+    padding:10px 20px;
+    margin-left: 0.5rem;
+    border-radius: 5px;
+    outline: none;
+    border:none;
+    cursor: pointer;
+    background-color:#292b2c;
+    color: white;
+}
+
+.image-dialog{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

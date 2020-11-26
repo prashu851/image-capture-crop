@@ -2,6 +2,11 @@ import React,{ useState } from 'react'
 import ReactCrop from "react-image-crop"
 import CropImage from './CropImage'
 import RotateImage from './RotateImage';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogTitle from '@material-ui/core/DialogTitle';
+
 
 const Crop = ({image,onSubmit}) => {
     const [croppedImageUrl, setCroppedImageUrl] = useState('')
@@ -29,9 +34,17 @@ const Crop = ({image,onSubmit}) => {
          }
      }
 
-     const rotateImage = () => {
+     const rotateRight = () => {
 
       RotateImage(imageRef, 90, 'croppedImage.jpeg')
+            .then((result)=> {
+              const blobUrl = URL.createObjectURL(result)
+              imageRef.src = blobUrl;
+            })
+     }
+     const rotateLeft = () => {
+
+      RotateImage(imageRef, -90, 'croppedImage.jpeg')
             .then((result)=> {
               const blobUrl = URL.createObjectURL(result)
               imageRef.src = blobUrl;
@@ -45,20 +58,32 @@ const Crop = ({image,onSubmit}) => {
      }
 
       return (
-            <> 
-              <ReactCrop
-                className="captured-image"
-                src={image} 
-                crop={crop} 
-                onChange={newCrop => newSetCrop(newCrop)}
-                onComplete={onCropComplete}
-                onImageLoaded={onImageLoaded} 
-              />
-              <button onClick={rotateImage}>Rotate</button>
-              <button onClick={onCrop} className="submit-btn">Submit</button>
-      {imageRef && <img src={imageRef.src} /> }
+            <>
+            <div className="crop-content">
+            <Dialog open={true} maxWidth="sm" fullWidth>
+              <DialogTitle>Edit Image</DialogTitle>
+
+              <DialogContent className="image-dialog">
+                <ReactCrop
+                      className="captured-image"
+                      src={image} 
+                      crop={crop} 
+                      onChange={newCrop => newSetCrop(newCrop)}
+                      onComplete={onCropComplete}
+                      onImageLoaded={onImageLoaded} 
+                    />
+              </DialogContent>
+              <DialogActions>
+              <div className="btns">
+                      <button className="right-btn" onClick={rotateRight}>Rotate Right</button>
+                      <button className="left-btn" onClick={rotateLeft}>Rotate Left</button>
+                      <button onClick={onCrop} className="submit-btn">Submit</button>
+                    </div>
+              </DialogActions>
+            </Dialog> 
+            </div>
+    
             </>
     )
 }
-//imageStyle={{transform:`rotate(${rotation}deg)`}} 
 export default Crop;

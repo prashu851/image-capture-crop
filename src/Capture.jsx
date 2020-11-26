@@ -26,7 +26,7 @@ const Capture = () => {
     const capture = () => {
         const screenshot = webcamRef.current.getScreenshot();
         addImage(screenshot);
-        updateToggle(false)
+        updateToggle(false);
         console.log(screenshot)
     }
 
@@ -60,7 +60,7 @@ const Capture = () => {
          </div>
         : ''
         }
-        { image !== null && <ImageCropModal image={image} onCrop={onCrop}/>}
+        { image !== null && <ImageCropModal image={image} onCrop={onCrop} />}
         { croppedImage !== null && <img className="cropped-image" src={croppedImage} />}
         
         </>
