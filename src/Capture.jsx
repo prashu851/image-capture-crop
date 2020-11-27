@@ -22,7 +22,7 @@ const Capture = () => {
     const [image, addImage] = useState(null);
     const [croppedImage, updateCroppedImage] = useState(null);
     const [toggle, updateToggle] = useState(false);
-
+    const [dialogToggle, setDialogToggle] = useState(false)
     const capture = () => {
         const screenshot = webcamRef.current.getScreenshot();
         addImage(screenshot);

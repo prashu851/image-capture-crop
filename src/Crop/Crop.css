@@ -39,3 +39,9 @@ float: right;
     align-items: center;
     justify-content: center;
 }
+
+.close-dialog{
+    position: absolute;
+    top:0;
+float:right;
+}

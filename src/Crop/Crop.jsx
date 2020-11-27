@@ -13,6 +13,7 @@ const Crop = ({image,onSubmit}) => {
     const [imageRef, setImageRef] = useState(null)
     const [rotation, setRotation] = useState(0)
     const [imageDimentions, updateImageDimentions] = useState({height: '', width: ''});
+   
     const [crop, setCrop] = useState({ 
         x:0,
         y:0,
@@ -74,11 +75,11 @@ const Crop = ({image,onSubmit}) => {
                     />
               </DialogContent>
               <DialogActions>
-              <div className="btns">
-                      <button className="right-btn" onClick={rotateRight}>Rotate Right</button>
-                      <button className="left-btn" onClick={rotateLeft}>Rotate Left</button>
-                      <button onClick={onCrop} className="submit-btn">Submit</button>
-                    </div>
+                <div className="btns">
+                  <button className="left-btn" onClick={rotateLeft}>Rotate Left</button>
+                  <button className="right-btn" onClick={rotateRight}>Rotate Right</button>
+                  <button onClick={onCrop} className="submit-btn">Submit</button>
+                </div>
               </DialogActions>
             </Dialog> 
             </div>
